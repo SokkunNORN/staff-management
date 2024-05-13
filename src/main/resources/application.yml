@@ -1,0 +1,10 @@
+spring:
+  application:
+  name: open-api
+
+server:
+  port: 8090
+
+springdoc:
+  api-docs:
+    path: /api-docs
