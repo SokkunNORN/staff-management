@@ -6,6 +6,7 @@ plugins {
 	id("org.asciidoctor.jvm.convert") version "3.3.2"
 	kotlin("jvm") version "1.9.23"
 	kotlin("plugin.spring") version "1.9.23"
+	kotlin("plugin.jpa") version "1.9.23"
 }
 
 group = "me.research.doc"
@@ -24,11 +25,15 @@ extra["snippetsDir"] = file("build/generated-snippets")
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	runtimeOnly("com.oracle.database.jdbc:ojdbc11")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+	runtimeOnly("com.mysql:mysql-connector-j")
+	implementation("org.liquibase:liquibase-core")
 
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
 }

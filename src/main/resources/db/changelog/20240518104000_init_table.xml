@@ -1,0 +1,122 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!--TABLE-->
+    <changeSet id="20240518104000_init_table" author="sokkun">
+        <createTable tableName="status">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_status" />
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <createTable tableName="department">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_status" />
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="timestamp" />
+        </createTable>
+
+        <createTable tableName="project">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_status" />
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="status_id" type="int">
+                <constraints nullable="false" />
+            </column>
+            <column name="start_date" type="timestamp" />
+            <column name="close_date" type="timestamp" />
+            <column name="created_by" type="int" />
+            <column name="created_at" type="timestamp" />
+            <column name="updated_by" type="int" />
+            <column name="updated_at" type="timestamp" />
+        </createTable>
+
+        <createTable tableName="user">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_status" />
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="department_id" type="int" />
+            <column name="created_by" type="int" />
+            <column name="created_at" type="timestamp" />
+            <column name="updated_by" type="int" />
+            <column name="updated_at" type="timestamp" />
+        </createTable>
+
+        <createTable tableName="user_project_involve">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_status" />
+            </column>
+            <column name="project_id" type="int">
+                <constraints nullable="false" />
+            </column>
+            <column name="user_id" type="int">
+                <constraints nullable="false" />
+            </column>
+            <column name="status_id" type="int" >
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="timestamp" />
+            <column name="updated_at" type="timestamp" />
+        </createTable>
+
+        <createTable tableName="user_project_log">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_status" />
+            </column>
+            <column name="project_id" type="int">
+                <constraints nullable="false" />
+            </column>
+            <column name="user_id" type="int">
+                <constraints nullable="false" />
+            </column>
+            <column name="status_id" type="int" >
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="timestamp" />
+        </createTable>
+    </changeSet>
+
+    <!--FOREIGN KEY-->
+    <changeSet id="20240518104000_init_fk" author="sokkun">
+        <addForeignKeyConstraint baseTableName="project" baseColumnNames="status_id"
+                                 referencedTableName="status"
+                                 constraintName="fk_project_status_id"
+                                 referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint baseTableName="user" baseColumnNames="department_id"
+                                 referencedTableName="department"
+                                 constraintName="pk_user_department_id"
+                                 referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint baseTableName="user_project_involve" baseColumnNames="status_id"
+                                 referencedTableName="status"
+                                 constraintName="fk_user_project_status_id"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="user_project_involve" baseColumnNames="user_id"
+                                 referencedTableName="user"
+                                 constraintName="fk_user_project_user_id"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="user_project_involve" baseColumnNames="project_id"
+                                 referencedTableName="project"
+                                 constraintName="fk_user_project_project_id"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+</databaseChangeLog>

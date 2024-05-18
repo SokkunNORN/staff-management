@@ -1,0 +1,13 @@
+version: '3'
+services:
+
+  mysql:
+    restart: always
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: open_api
+      MYSQL_ROOT_PASSWORD: pwd123
+      MYSQL_USER: user
+      MYSQL_PASS: pwd123
+    ports:
+      - "3306:3306"
