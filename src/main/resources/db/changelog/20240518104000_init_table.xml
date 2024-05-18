@@ -119,4 +119,16 @@
                                  referencedColumnNames="id"/>
     </changeSet>
 
+    <changeSet id="20240518104000_init_data" author="sokkun">
+        <loadData tableName="status" file="db/seed/status.csv">
+            <column name="id" type="numeric"/>
+            <column name="name" type="string"/>
+        </loadData>
+
+        <loadData tableName="department" file="db/seed/department.csv">
+            <column name="id" type="numeric"/>
+            <column name="name" type="string"/>
+        </loadData>
+    </changeSet>
+
 </databaseChangeLog>

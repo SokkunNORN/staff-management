@@ -2,4 +2,4 @@ package me.research.doc.openapi.controllers.response
 
 import org.springframework.http.ResponseEntity
 
-fun <T> ok(data: T) = ResponseEntity.ok(ResponseWrapper.data(data))
+fun <T> T.ok() = ResponseEntity.ok(ResponseWrapper.data(this))
