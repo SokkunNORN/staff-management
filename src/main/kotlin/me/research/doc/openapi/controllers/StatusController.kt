@@ -13,5 +13,5 @@ class StatusController(
 ) {
 
     @GetMapping
-    fun findAll() = service.findAll().ok()
+    fun findAllStatus() = service.findAll().ok()
 }

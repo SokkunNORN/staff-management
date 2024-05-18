@@ -16,7 +16,7 @@ class UserProjectController(
 ) {
 
     @PutMapping("/project/{projectId}/user/{userId}")
-    fun updateStatus(
+    fun updateUserProjectStatus(
         @PathVariable projectId: Long,
         @PathVariable userId: Long,
         @RequestBody request: UserProjectReq

@@ -13,5 +13,5 @@ class DepartmentController(
 ) {
 
     @GetMapping
-    fun findAll() = service.findAll().ok()
+    fun findDepartments() = service.findAll().ok()
 }

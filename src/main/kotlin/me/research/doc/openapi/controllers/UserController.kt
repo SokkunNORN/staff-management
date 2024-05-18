@@ -21,7 +21,7 @@ class UserController(
 ) {
 
     @GetMapping
-    fun findAll(
+    fun findUsers(
         request: UserReq.Filter?,
         @SortDefault.SortDefaults(
             SortDefault(sort = ["createdAt"], direction = Sort.Direction.DESC)
@@ -29,14 +29,14 @@ class UserController(
     ) = service.findAll(request, pageable).ok()
 
     @GetMapping("/reference")
-    fun findAllReference() = service.findAllReference().ok()
+    fun findUsersReference() = service.findAllReference().ok()
 
     @GetMapping("/{id}")
-    fun findById(@PathVariable id: Long) = service.findById(id).ok()
+    fun findUserById(@PathVariable id: Long) = service.findById(id).ok()
 
     @PostMapping
-    fun create(@RequestBody request: UserReq) = service.create(request).ok()
+    fun createUser(@RequestBody request: UserReq) = service.create(request).ok()
 
     @PutMapping("/{id}")
-    fun update(@PathVariable id: Long, @RequestBody request: UserReq) = service.update(id, request).ok()
+    fun updateUser(@PathVariable id: Long, @RequestBody request: UserReq) = service.update(id, request).ok()
 }

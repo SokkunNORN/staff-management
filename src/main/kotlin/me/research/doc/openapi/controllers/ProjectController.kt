@@ -15,7 +15,7 @@ class ProjectController(
 ) {
 
     @GetMapping
-    fun findAll(
+    fun findProjects(
         request: ProjectReq.Filter?,
         @SortDefault.SortDefaults(
             SortDefault(sort = ["createdAt"], direction = Sort.Direction.DESC)
@@ -23,17 +23,17 @@ class ProjectController(
     ) = service.findAll(request, pageable).ok()
 
     @GetMapping("/reference")
-    fun findAllReference() = service.findAllReference().ok()
+    fun findProjectsReference() = service.findAllReference().ok()
 
     @GetMapping("/{id}")
-    fun findById(@PathVariable id: Long) = service.findById(id).ok()
+    fun findProjectById(@PathVariable id: Long) = service.findById(id).ok()
 
     @PostMapping
-    fun create(@RequestBody request: ProjectReq) = service.create(request).ok()
+    fun createProject(@RequestBody request: ProjectReq) = service.create(request).ok()
 
     @PutMapping("/{id}")
-    fun update(@PathVariable id: Long, @RequestBody request: ProjectReq) = service.update(id, request).ok()
+    fun updateProject(@PathVariable id: Long, @RequestBody request: ProjectReq) = service.update(id, request).ok()
 
     @PostMapping("/{id}/add-participant")
-    fun addParticipants(@PathVariable id: Long, @RequestBody userIds: List<Long>) = service.addParticipants(id, userIds)
+    fun addProjectParticipants(@PathVariable id: Long, @RequestBody userIds: List<Long>) = service.addParticipants(id, userIds).ok()
 }
