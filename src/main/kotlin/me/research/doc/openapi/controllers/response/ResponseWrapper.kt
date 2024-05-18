@@ -1,5 +1,7 @@
 package me.research.doc.openapi.controllers.response
 
+import me.research.doc.openapi.common.ErrorCode
+
 class ResponseWrapper(val data: Any?, val status: Status) {
     companion object {
         fun data(data: Any?): ResponseWrapper {

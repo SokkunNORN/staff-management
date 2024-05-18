@@ -1,8 +1,10 @@
 package me.research.doc.openapi.controllers.response
 
+import me.research.doc.openapi.common.ErrorCode
+
 class Status(
     val code: Int,
-    val errorCode: Int? = null,
+    val errorCode: String? = null,
     val error: String? = null,
     val warning: String? = null
 ) {
